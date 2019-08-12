@@ -1,7 +1,7 @@
 rm(list = ls())
 
-# Os 15 primeiros pacotes são os que sempre dou "library", só para garantir
-# Os últimos 6 são necessários para o loop
+# Os 15 primeiros pacotes sÃ£o os que sempre dou "library", sÃ³ para garantir
+# Os Ãºltimos 6 sÃ£o necessÃ¡rios para o mapa
 library(bit64)
 library(data.table)
 library(descr)
@@ -27,8 +27,8 @@ library(RColorBrewer)
 library(stringi)
 library(PNADcIBGE)
 
-# É preciso definir qualquer endereço, para salvar o mapa
-wd <- "C:/Users/DaniellaBritto/Desktop/PNADs/PNADsCont/PNADC - dta Novo Dicionário (2019)"
+# Ã‰ preciso definir qualquer endereÃ§o, para salvar o mapa
+wd <- "C:/Users/DaniellaBritto/Desktop/PNADs/PNADsCont/PNADC - dta Novo DicionÃ¡rio (2019)"
 
 setwd(wd)
 
@@ -53,6 +53,6 @@ plot1 <-   ggplot() + geom_sf(data=PNADCUF, aes(fill= Desemprego),
                        breaks = pretty_breaks(n = 10),
                        direction=1)+
   guides(fill = guide_legend(reverse = TRUE))+
-  labs(title="Desemprego por Estado (em %)",caption="Fonte: PNAD Contínua 1ºTri/19")
+  labs(title="Desemprego por Estado (em %)",caption="Fonte: PNAD ContÃ­nua 1ÂºTri/19")
 
 ggsave(plot1,file="Desemprego.png")
