@@ -44,6 +44,9 @@ PNADCState <- PNADC2019_1 %>% group_by(`UF`) %>% summarise(Desemprego=mean(desem
 
 PNADCState <- PNADCState %>% rename(code_state=UF)
 
+PNADCState$code_state <- as.numeric(PNADCState$code_state)
+UF$code_state <- as.numeric(UF$code_state)
+
 PNADCUF <- left_join(UF,PNADCState,by="code_state")
 
 
@@ -53,6 +56,7 @@ plot1 <-   ggplot() + geom_sf(data=PNADCUF, aes(fill= Desemprego),
                        breaks = pretty_breaks(n = 10),
                        direction=1)+
   guides(fill = guide_legend(reverse = TRUE))+
+  geom_sf_text(data=PNADCUF,aes(label = paste(round(Desemprego,digits=2),"%",sep="")), colour = "black",size=0.75)+
   labs(title="Desemprego por Estado (em %)",caption="Fonte: PNAD Contínua 1ºTri/19")
 
 ggsave(plot1,file="Desemprego.png")
